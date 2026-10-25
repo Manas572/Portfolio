@@ -1,0 +1,55 @@
+{
+  "~": {
+    "type": "dir",
+    "contents": {
+      "about.txt": {
+        "type": "file",
+        "content": "NAME : {green}Manas Kumar{/green}\n#: {cyan}Full Stack Web Developer & AI/ML Engineer{/cyan}\nB.Tech Computer Science student at {green}IIIT Bhopal{/green} (CGPA 8.36).\nI build production-ready systems using {cyan}Django, FastAPI, React, and PostgreSQL{/cyan}, with deep hands-on experience in {magenta}RAG, LangChain, Qdrant, and PyTorch{/magenta}.\n\nI am also an active competitive programmer — {yellow}Codeforces Specialist (max rating 1434){/yellow} with {green}1000+ problems solved{/green} across LeetCode, CodeChef, and Codeforces.\n\nCurrently serving as {green}Web Development Lead at Spark (College Technical Club){/green}."
+      },
+      "skills.txt": {
+        "type": "file",
+        "content": "LANGUAGES    : {green}C++, C, Python, JavaScript, SQL{/green}\nFRONTEND     : {cyan}React.js, HTML5, CSS3, Tailwind CSS, Bootstrap{/cyan}\nBACKEND      : {yellow}Django, DRF, FastAPI, Node.js{/yellow}\nML & AI      : {magenta}Machine Learning, Deep Learning, PyTorch, LangChain, NumPy, Pandas{/magenta}\nDATABASES    : {cyan}PostgreSQL, MySQL, Qdrant, Redis, pgvector{/cyan}\nTOOLS/DEPLOY : {green}Git, GitHub, Docker, Postman, Axios, JWT, Vercel, Render{/green}\nSTATUS       : {green}Building high-performance full stack & GenAI systems{/green}"
+      },
+      "contact.txt": {
+        "type": "file",
+        "content": "# Contact\n// LET'S CONNECT\n\nNAME       : Manas Kumar\nEMAIL      : manaskumar20056@gmail.com\nPHONE      : +91-6287905198\nLOCATION   : Bhopal, India\nGITHUB     : github.com/Manas572\nLINKEDIN   : linkedin.com/in/manas-kumar-512523326\n\nSTATUS     : {green}OPEN TO OPPORTUNITIES{/green}"
+      },
+
+      "projects": {
+        "type": "dir",
+        "contents": {
+          "next-hire.md": {
+            "type": "file",
+            "content": "# Next Hire\n// RESUME ANALYZER & AI INTERVIEW PLATFORM (2026)\n\nRecruitment platform that analyzes resumes, matches them to jobs, generates interview questions and creates resume PDFs.\n\n• Built REST APIs in {cyan}DRF with JWT login{/cyan} and separate recruiter access.\n• Compared resume and job description embeddings to tailor interview questions to each candidate.\n• Used {magenta}LangChain with Gemini API{/magenta} for resume analysis and question generation.\n• Stored questions and candidate data in {green}PostgreSQL{/green}.\n\nSTACK   : Django / DRF / React / PostgreSQL / LangChain / Gemini API / JWT"
+          },
+
+          "codelens.md": {
+            "type": "file",
+            "content": "# CodeLens\n// CHAT WITH A GITHUB REPO, ANSWERS CITED TO LINES (2026)\n\nRAG code assistant that answers questions about a GitHub repo and cites each answer as file and line range; four pinned demo repos plus guarded indexing of public repos.\n\n• {magenta}Hybrid retrieval in Qdrant{/magenta} (Gemini dense embeddings + BM25 sparse vectors) over line-mapped chunks.\n• Prompt chain of query rewrite, retrieval, cited answer and a code check that every citation exists in the retrieved chunks.\n• Ingestion guarded by a GitHub size check, single-ingest lock and least-recently-queried pruning.\n• Deployed on {green}Vercel and Render with Neon Postgres{/green}.\n\nSTACK   : FastAPI / React / Qdrant / PostgreSQL / LangChain / Gemini API / Vercel / Render"
+          },
+
+          "varta-raksha.md": {
+            "type": "file",
+            "content": "# VartaRaksha\n// REAL-TIME VOICE DEEPFAKE DETECTION (2025)\n\nA Python SDK for AI voice detection, speech context analysis, speaker recognition, and risk pattern detection.\n\n• Identifies synthetic voices and analyzes speech for suspicious scam indicators like OTP requests or urgency.\n• Performs speaker recognition via voice similarity matching.\n• Published on {yellow}PyPI{/yellow} for seamless integration into real-time voice communication pipelines.\n\nSTACK   : Python / Machine Learning / PyPI / FastAPI / React\nGITHUB  : github.com/Manas572/VartaRaksha"
+          }
+        }
+      },
+      "experience.txt": {
+        "type": "file",
+        "content": "# Experience\n// LEADERSHIP & COMMUNITY WORK\n\n{yellow}Web Development Lead{/yellow} | Jan 2026 – Present\n{cyan}Spark – College Technical Club, IIIT Bhopal{/cyan}\n\n• Lead the web team of the college technical club and build its frontend in React.\n• Build responsive pages from shared React components for club websites and events.\n• Work with teammates on features, code merges and deployment."
+      },
+      "education.txt": {
+        "type": "file",
+        "content": "INSTITUTION : {green}IIIT Bhopal{/green} (Indian Institute of Information Technology)\nDEGREE      : B.Tech in Computer Science & Engineering\nCGPA        : {cyan}8.36{/cyan}\nGRADUATION  : {yellow}2028{/yellow}\n\nCLASS XII   : 93.2%\nCLASS X     : 93.6%\n\nCOURSEWORK  : Data Structures & Algorithms, Object-Oriented Programming, Database Management Systems, Operating Systems, Computer Networks"
+      },
+      "certifications.txt": {
+        "type": "file",
+        "content": "• Codeforces Specialist (Max Rating: 1434)\n• LeetCode Max Rating: 1795\n• CodeChef Max Rating: 1607\n• 1000+ Problems Solved in C++"
+      },
+      "dsa.txt": {
+        "type": "file",
+        "content": "# DSA & Competitive Programming {yellow}[ Problem Solving ]{/yellow}\n\nCompetitive programmer with a strong grasp of data structures, algorithms, and contest problem solving.\n{cyan}1000+ problems solved{/cyan} in C++ using DP, graphs, sliding window, and PBDS.\n\n{yellow}LEETCODE{/yellow}    Rating: {green}1795{/green}  ·  Profile: {cyan}leetcode.com/u/manaskumar24{/cyan}\n{yellow}CODECHEF{/yellow}    Rating: {green}1607{/green}  ·  Profile: {cyan}codechef.com/users/joyoy_20{/cyan}\n{yellow}CODEFORCES{/yellow}  Rating: {cyan}1434 (Specialist){/cyan}  ·  Profile: {cyan}codeforces.com/profile/manaskumar10{/cyan}\n{yellow}CODOLIO{/yellow}     Profile: {cyan}codolio.com/profile/manas2007{/cyan}\n\nLANGUAGE      : {magenta}C++{/magenta}\nTOPICS        : Dynamic Programming, Graph Theory, Sliding Window, Policy-Based Data Structures (PBDS)\nSTATUS        : {green}CONSISTENT PROBLEM SOLVER{/green}"
+      }
+    }
+  }
+}

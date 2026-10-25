@@ -1,0 +1,15 @@
+{
+  "skills": {
+    "languages": ["C++", "C", "Python", "JavaScript", "SQL"],
+    "frontend": ["React.js", "HTML5", "CSS3", "Tailwind CSS", "Bootstrap"],
+    "backend": [
+      "Django",
+      "DRF",
+      "FastAPI",
+      "Node.js"
+    ],
+    "ml_ai": ["Machine Learning", "Deep Learning", "PyTorch", "LangChain", "NumPy", "Pandas"],
+    "databases": ["PostgreSQL", "MySQL", "Qdrant", "Redis", "pgvector"],
+    "tools_deployment": ["Git", "GitHub", "Postman", "Axios", "JWT", "Docker", "Vercel", "Render"]
+  }
+}

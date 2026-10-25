@@ -1,0 +1,18 @@
+{
+  "experience": {
+    "formal": [
+      {
+        "role": "Web Development Lead",
+        "organization": "Spark – College Technical Club, IIIT Bhopal",
+        "period": "Jan 2026 – Present",
+        "bullets": [
+          "Lead the web team of the college technical club and build its frontend in React",
+          "Build responsive pages from shared React components for club websites and events",
+          "Work with teammates on features, code merges and deployment"
+        ]
+      }
+    ],
+    "note": "Manas serves as Web Development Lead at Spark (College Technical Club) since January 2026.",
+    "guidance": "Do not infer or invent employment, internships, freelance work, or other professional experience beyond this."
+  }
+}

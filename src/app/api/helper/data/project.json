@@ -1,0 +1,82 @@
+{
+  "projects": [
+    {
+      "id": "next-hire",
+      "title": "Next Hire",
+      "subtitle": "Resume Analyzer & AI Interview Platform",
+      "description": "Recruitment platform that analyzes resumes, matches them to jobs, generates interview questions and creates resume PDFs.",
+      "category": "fullstack_ai",
+      "tech_stack": [
+        "Django",
+        "DRF",
+        "React",
+        "PostgreSQL",
+        "LangChain",
+        "Gemini API",
+        "JWT"
+      ],
+      "highlights": [
+        "Built REST APIs in DRF with JWT authentication and role-based access for recruiters",
+        "Compared resume and job description embeddings to tailor interview questions to each candidate",
+        "Utilized LangChain with the Gemini API for deep resume analysis and dynamic interview question generation",
+        "Stored questions, applicant data, and evaluations in PostgreSQL"
+      ],
+      "live_url": "",
+      "github_url": "https://github.com/Manas572",
+      "year": 2026,
+      "featured": true
+    },
+    {
+      "id": "codelens",
+      "title": "CodeLens",
+      "subtitle": "Chat with a GitHub Repo, Answers Cited to Lines",
+      "description": "RAG code assistant that answers questions about a GitHub repo and cites each answer as exact file and line ranges.",
+      "category": "ai_rag",
+      "tech_stack": [
+        "FastAPI",
+        "React",
+        "Qdrant",
+        "PostgreSQL",
+        "LangChain",
+        "Gemini API",
+        "Vercel",
+        "Render",
+        "Neon Postgres"
+      ],
+      "highlights": [
+        "Implemented hybrid retrieval in Qdrant combining Gemini dense embeddings and BM25 sparse vectors over line-mapped code chunks",
+        "Designed a verification prompt chain: query rewrite, retrieval, cited answer, and AST/code validation ensuring all citations exist in retrieved chunks",
+        "Engineered guarded ingestion pipeline with GitHub repo size checking, single-ingest locks, and least-recently-queried (LRU) pruning",
+        "Deployed frontend on Vercel and backend microservices on Render backed by serverless Neon Postgres"
+      ],
+      "live_url": "",
+      "github_url": "https://github.com/Manas572",
+      "year": 2026,
+      "featured": true
+    },
+    {
+      "id": "vartaraksha",
+      "title": "VartaRaksha",
+      "subtitle": "Real-Time Voice Deepfake Detection",
+      "description": "A Python SDK for real-time AI voice detection, speech context analysis, speaker recognition, and risk pattern detection.",
+      "category": "ai_security",
+      "tech_stack": [
+        "Python",
+        "Machine Learning",
+        "PyPI",
+        "FastAPI",
+        "React"
+      ],
+      "highlights": [
+        "Engineered real-time acoustic pipeline to classify synthetic/deepfake voices against authentic human speech",
+        "Analyzes conversational audio stream for suspicious scam indicators like urgent requests and OTP extortion",
+        "Performs biometric speaker recognition via voice similarity matching",
+        "Published as a reusable open-source Python SDK package on PyPI"
+      ],
+      "live_url": "https://pypi.org/project/VartaRaksha",
+      "github_url": "https://github.com/Manas572/VartaRaksha",
+      "year": 2025,
+      "featured": true
+    }
+  ]
+}

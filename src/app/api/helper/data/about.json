@@ -1,0 +1,28 @@
+{
+  "about": {
+    "name": "Manas Kumar",
+    "role": "Full Stack Web Developer",
+    "institution": "Indian Institute of Information Technology, Bhopal",
+    "degree": "B.Tech in Computer Science and Engineering",
+    "cgpa": "8.36/10",
+    "graduation": 2028,
+    "summary": "B.Tech Computer Science student at IIIT Bhopal (CGPA 8.36) with experience building full-stack and GenAI applications with Django, FastAPI, React, and PostgreSQL, including RAG and PyTorch work with LangChain and Qdrant. Codeforces Specialist (max rating 1434) with 1000+ problems solved.",
+    "focus_areas": [
+      "Full-Stack Development",
+      "Retrieval-Augmented Generation (RAG)",
+      "Generative AI & LLM Systems",
+      "Backend Engineering",
+      "Data Structures and Algorithms",
+      "Competitive Programming"
+    ],
+    "highlights": [
+      "Web Development Lead at Spark – College Technical Club (IIIT Bhopal)",
+      "Built Next Hire: AI-powered recruitment platform with Django, DRF, React, LangChain, and Gemini API",
+      "Built CodeLens: RAG code assistant for GitHub repos featuring Qdrant hybrid retrieval and cited line ranges",
+      "Engineered VartaRaksha: Python SDK on PyPI for real-time voice deepfake detection and speech context analysis",
+      "Codeforces Specialist (max rating 1434), LeetCode max rating 1795, CodeChef max rating 1607",
+      "Solved 1000+ problems in C++ on competitive programming platforms using DP, graphs, sliding window, and PBDS"
+    ]
+  },
+  "guidance": "Use this information for broad questions about Manas as a person, student, developer, or overall technical profile. Do not invent information beyond the provided data."
+}

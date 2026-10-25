@@ -1,0 +1,40 @@
+{
+  "education": {
+    "data": [
+      {
+        "degree": "B.Tech in Computer Science and Engineering",
+        "institution": "Indian Institute of Information Technology, Bhopal",
+        "start_year": 2024,
+        "end_year": 2028,
+        "cgpa": "8.36/10",
+        "coursework": [
+          "Data Structures & Algorithms",
+          "Object-Oriented Programming",
+          "Database Management Systems",
+          "Operating Systems",
+          "Computer Networks"
+        ],
+        "highlights": [
+          "B.Tech Computer Science & Engineering student at IIIT Bhopal",
+          "Class XII: 93.2%",
+          "Class X: 93.6%"
+        ]
+      }
+    ],
+    "schooling": {
+      "class_xii": "93.2%",
+      "class_x": "93.6%"
+    },
+    "note": "Manas is pursuing a B.Tech in Computer Science and Engineering at IIIT Bhopal (Graduation 2028) with CGPA 8.36.",
+    "guidance": "Do not invent academic achievements, coursework, grades, or dates beyond the information explicitly provided."
+  },
+  "certifications": {
+    "data": [
+      "Codeforces Specialist (Rating: 1434)",
+      "LeetCode Max Rating: 1795",
+      "CodeChef Max Rating: 1607"
+    ],
+    "note": "Manas's achievements include Codeforces Specialist and top contest ratings across platforms.",
+    "guidance": "Do not invent or infer certifications."
+  }
+}

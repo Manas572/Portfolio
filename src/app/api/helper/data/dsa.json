@@ -1,0 +1,36 @@
+{
+  "dsa": {
+    "data": {
+      "problems_solved": "1000+",
+      "codeforces": {
+        "rating": 1434,
+        "rank": "Specialist",
+        "handle": "manaskumar10",
+        "profile": "https://codeforces.com/profile/manaskumar10"
+      },
+      "leetcode": {
+        "rating": 1795,
+        "handle": "manaskumar24",
+        "profile": "https://leetcode.com/u/manaskumar24"
+      },
+      "codechef": {
+        "rating": 1607,
+        "handle": "joyoy_20",
+        "profile": "https://codechef.com/users/joyoy_20"
+      },
+      "codolio": {
+        "handle": "manas2007",
+        "profile": "https://codolio.com/profile/manas2007"
+      },
+      "strengths": [
+        "Dynamic Programming",
+        "Graph Algorithms",
+        "Sliding Window",
+        "Policy-Based Data Structures (PBDS)",
+        "Data Structures and Algorithms"
+      ]
+    },
+    "note": "Manas actively participates in competitive programming and has solved 1000+ problems in C++ across Codeforces, LeetCode, and CodeChef.",
+    "guidance": "Use only the statistics explicitly provided here. Do not invent current ratings, ranks, problem counts, or additional competitive programming achievements."
+  }
+}
