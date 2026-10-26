@@ -11,20 +11,14 @@ import {
 import { FaLinkedin } from "react-icons/fa";
 import Link from "next/link";
 import { Download, Sparkles, FileText, Infinity } from "lucide-react";
+import BranchedMenu from "@/component/branch-menu/BranchedMenu";
 
 // ─── Card data ───────────────────────────────────────────────────────────────
 const PROFILE = {
   fullName: "Manas Kumar",
-  handle: "@manaskumar10",
   role: "Full Stack Web Developer",
   institute: "IIIT Bhopal",
-  joinDate: "AUG 2024",
-  idNumber: "24U022026",
-  status: "student",
   email: "manaskumar20056@gmail.com",
-  github: "github.com/Manas572",
-  linkedin: "linkedin.com/in/manas-kumar-512523326",
-  website: "github.com/Manas572",
 };
 
 // ─── Front face ───────────────────────────────────────────────────────────────
@@ -102,10 +96,18 @@ function CardFront() {
 // ─── Back face ────────────────────────────────────────────────────────────────
 function CardBack() {
   const infoRows = [
-    { label: "email", val: PROFILE.email },
-    { label: "github", val: PROFILE.github },
-    { label: "linkedin", val: PROFILE.linkedin },
-    { label: "website", val: PROFILE.website },
+    { label: "email", value: PROFILE.email, href: `mailto:${PROFILE.email}` },
+    {
+      label: "linkedin",
+      value: "linkedin.com/in/manas-kumar-512523326",
+      href: "https://linkedin.com/in/manas-kumar-512523326",
+    },
+    { label: "github", value: "github.com/Manas572", href: "https://github.com/Manas572" },
+    {
+      label: "codeforces",
+      value: "codeforces.com/profile/manaskumar10",
+      href: "https://codeforces.com/profile/manaskumar10",
+    },
   ];
 
   return (
@@ -150,7 +152,7 @@ function CardBack() {
           &gt;
         </div>
         <span className="font-mono text-[11px]" style={{ color: "#BEDEFF" }}>
-          ~/{PROFILE.handle}
+          /home/manas/contact
         </span>
       </div>
 
@@ -172,64 +174,36 @@ function CardBack() {
         </div>
         <div className="w-20 mt-1" style={{ height: 1, background: "#ff4d9d55" }} />
         <div className="font-mono text-[9px]" style={{ color: "#64748b" }}>
-          [ SYSTEM // ONLINE ]
+          [ CONTACT // CONNECT ]
         </div>
       </div>
 
       {/* Divider */}
       <div className="mx-4 my-2" style={{ height: 1, background: "#6272a444" }} />
 
-      {/* Meta: join date + status */}
-      <div className="flex items-start justify-between px-4 pb-2">
-        <div className="flex flex-col">
-          <span className="font-mono text-[9px] font-bold" style={{ color: "#6272a4" }}>
-            // JOIN_DATE
-          </span>
-          <span className="font-mono font-bold text-[12px]" style={{ color: "#f8fafc" }}>
-            {PROFILE.joinDate}
-          </span>
-        </div>
-        <div className="flex flex-col items-end">
-          <span className="font-mono text-[9px] font-bold" style={{ color: "#6272a4" }}>
-            // status
-          </span>
-          <span className="font-mono font-bold text-[12px]" style={{ color: "yellow" }}>
-            {PROFILE.status}
-          </span>
-        </div>
-      </div>
-
-      {/* Divider */}
-      <div className="mx-4 mb-2" style={{ height: 1, background: "#6272a444" }} />
-
       {/* Info section */}
-      <div className="px-4 flex-1 overflow-hidden">
+      <div className="px-4 pt-1 flex-1 min-h-0 overflow-y-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
         <div className="font-mono font-bold text-[11px] mb-2" style={{ color: "#FFA500" }}>
-          my info
+          contact
         </div>
         <div className="flex flex-col gap-2">
           {infoRows.map((item) => (
-            <div key={item.label} className="flex flex-col gap-0">
+            <a
+              key={item.label}
+              href={item.href}
+              target={item.label === "email" ? undefined : "_blank"}
+              rel={item.label === "email" ? undefined : "noopener noreferrer"}
+              className="flex flex-col gap-0 rounded-sm outline-none focus-visible:ring-1 focus-visible:ring-[#FFA500]"
+            >
               <span className="font-mono font-bold text-[9px]" style={{ color: "#BEDEFF" }}>
                 [{item.label}]
               </span>
-              <span className="font-mono text-[9px] truncate" style={{ color: "#f8fafc" }}>
-                {item.val}
+              <span className="font-mono text-[9px] break-all leading-tight" style={{ color: "#f8fafc" }}>
+                {item.value}
               </span>
-            </div>
+            </a>
           ))}
         </div>
-      </div>
-
-      {/* ID number */}
-      <div
-        className="mx-4 mt-2 mb-4 rounded-lg flex items-center justify-between px-3 py-1.5"
-        style={{ background: "#181b20", border: "1px solid #6272a444" }}
-      >
-        <span className="font-mono text-[9px]" style={{ color: "#6272a4" }}>ID#</span>
-        <span className="font-mono font-bold text-[10px]" style={{ color: "#FFF2A7" }}>
-          {PROFILE.idNumber}
-        </span>
       </div>
     </div>
   );
@@ -266,8 +240,10 @@ export function IdCard() {
         </TiltedCard>
       </div>
 
-      {/* ── MIDDLE: space reserved for future component ───────────────────── */}
-      <div className="flex-1 min-h-0" />
+      {/* ── MIDDLE: interactive view of the portfolio filesystem ─────────── */}
+      <div className="flex-1 min-h-0 overflow-y-auto flex justify-center items-start pt-2 pb-3 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+        <BranchedMenu />
+      </div>
 
       {/* ── BOTTOM: merged single nav bar ────────────────────────────────── */}
       <div className="shrink-0 flex items-center justify-center pb-4 px-4 relative z-10">

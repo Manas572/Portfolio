@@ -14,6 +14,7 @@ import Error from "next/error";
 
 export function TerminalPortfolio() {
   const [currentPath, setCurrentPath] = useState(["~"]);
+  const [selectedFile, setSelectedFile] = useState(null);
   const [history, setHistory] = useState([]);
   const [input, setInput] = useState("");
   const [suggestion, setSuggestion] = useState("");
@@ -184,12 +185,17 @@ export function TerminalPortfolio() {
       case "cd":
         if (!arg1 || arg1 === "~") {
           setCurrentPath(["~"]);
+          setSelectedFile(null);
         } else if (arg1 === "..") {
-          if (currentPath.length > 1) setCurrentPath(currentPath.slice(0, -1));
+          if (currentPath.length > 1) {
+            setCurrentPath(currentPath.slice(0, -1));
+            setSelectedFile(null);
+          }
         } else {
           const target = currentDir?.contents?.[arg1];
           if (target && target.type === "dir") {
             setCurrentPath([...currentPath, arg1]);
+            setSelectedFile(null);
           } else if (target && target.type === "file") {
             newHistory.push({
               type: "error",
@@ -208,19 +214,31 @@ export function TerminalPortfolio() {
         if (!arg1) {
           newHistory.push({ type: "error", text: "cat: missing file operand" });
         } else {
-          const fileObj = currentDir?.contents?.[arg1];
+          const rawPath = args.join(" ");
+          const isHomePath = rawPath.startsWith("~/");
+          const requestedPath = rawPath.replace(/^~\/?/, "");
+          const pathParts = requestedPath.split("/").filter(Boolean);
+          let fileName = pathParts.pop();
+          let sourceDir = isHomePath || requestedPath.includes("/") ? FILE_SYSTEM["~"] : currentDir;
+          const selectedPath = isHomePath || requestedPath.includes("/")
+            ? `~/${requestedPath}`
+            : `${currentPath.join("/")}/${requestedPath}`;
+
+          for (const directoryName of isHomePath || requestedPath.includes("/") ? pathParts : []) {
+            const directory = sourceDir?.contents?.[directoryName];
+            sourceDir = directory?.type === "dir" ? directory : null;
+          }
+
+          const fileObj = sourceDir?.contents?.[fileName];
           if (fileObj && fileObj.type === "file") {
             newHistory.push({ type: "rich", text: fileObj.content });
+            setSelectedFile(selectedPath);
           } else if (fileObj && fileObj.type === "dir") {
-            newHistory.push({
-              type: "error",
-              text: `cat: ${arg1}: Is a directory`,
-            });
+            setSelectedFile(null);
+            newHistory.push({ type: "error", text: `cat: ${args.join(" ")}: Is a directory` });
           } else {
-            newHistory.push({
-              type: "error",
-              text: `cat: ${arg1}: No such file`,
-            });
+            setSelectedFile(null);
+            newHistory.push({ type: "error", text: `cat: ${args.join(" ")}: No such file` });
           }
         }
         break;
@@ -280,6 +298,7 @@ export function TerminalPortfolio() {
         break;
 
       case "about":
+        setSelectedFile("~/about.txt");
         newHistory.push({
           type: "rich",
           text: FILE_SYSTEM["~"].contents["about.txt"].content,
@@ -287,6 +306,7 @@ export function TerminalPortfolio() {
         break;
 
       case "skills":
+        setSelectedFile("~/skills.txt");
         newHistory.push({
           type: "rich",
           text: FILE_SYSTEM["~"].contents["skills.txt"].content,
@@ -294,6 +314,7 @@ export function TerminalPortfolio() {
         break;
 
       case "dsa":
+        setSelectedFile("~/dsa.txt");
         newHistory.push({
           type: "rich",
           text: FILE_SYSTEM["~"].contents["dsa.txt"].content,
@@ -301,6 +322,7 @@ export function TerminalPortfolio() {
         break;
 
       case "contact":
+        setSelectedFile("~/contact.txt");
         newHistory.push({
           type: "rich",
           text: FILE_SYSTEM["~"].contents["contact.txt"].content,
@@ -308,6 +330,7 @@ export function TerminalPortfolio() {
         break;
 
       case "experience":
+        setSelectedFile("~/experience.txt");
         newHistory.push({
           type: "rich",
           text: FILE_SYSTEM["~"].contents["experience.txt"].content,
@@ -315,6 +338,7 @@ export function TerminalPortfolio() {
         break;
 
       case "education":
+        setSelectedFile("~/education.txt");
         newHistory.push({
           type: "rich",
           text: FILE_SYSTEM["~"].contents["education.txt"].content,
@@ -322,6 +346,7 @@ export function TerminalPortfolio() {
         break;
 
       case "certifications":
+        setSelectedFile("~/certifications.txt");
         newHistory.push({
           type: "rich",
           text: FILE_SYSTEM["~"].contents["certifications.txt"].content,
@@ -345,6 +370,29 @@ export function TerminalPortfolio() {
 
     setHistory(newHistory);
   };
+
+  const executeCommandRef = useRef(executeCommand);
+  useEffect(() => {
+    executeCommandRef.current = executeCommand;
+  }, [executeCommand]);
+
+  useEffect(() => {
+    const openFile = (event) => {
+      const filePath = event.detail?.path;
+      if (filePath) executeCommandRef.current(`cat ${filePath}`);
+    };
+
+    window.addEventListener("portfolio:open-file", openFile);
+    return () => window.removeEventListener("portfolio:open-file", openFile);
+  }, []);
+
+  useEffect(() => {
+    window.dispatchEvent(
+      new CustomEvent("portfolio:terminal-navigation", {
+        detail: { currentPath, selectedFile },
+      }),
+    );
+  }, [currentPath, selectedFile]);
 
   // const runHelpCommand = () => {
   //   const initialHist = [];
