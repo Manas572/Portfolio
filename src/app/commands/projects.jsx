@@ -7,7 +7,7 @@ const projects = [
     tag: "Resume Analyzer & AI Interview",
     desc: "Recruitment platform that analyzes resumes, matches them to jobs, generates interview questions and creates resume PDFs. Built REST APIs in DRF with JWT login and separate recruiter access; compared resume and job description embeddings to tailor interview questions; used LangChain with Gemini API for resume analysis; stored questions in PostgreSQL.",
     stack: ["Django", "DRF", "React", "PostgreSQL", "LangChain", "Gemini API", "JWT"],
-    href: "https://github.com/Manas572",
+    href: "https://github.com/Manas572/Next-Hire-Backend",
   },
 
   {
@@ -15,7 +15,7 @@ const projects = [
     tag: "RAG Code Assistant",
     desc: "RAG code assistant that answers questions about a GitHub repo and cites each answer as file and line range; four pinned demo repos plus guarded indexing of public repos. Features hybrid retrieval in Qdrant (Gemini dense embeddings + BM25 sparse vectors) over line-mapped chunks, prompt chain verification, and guarded ingestion with LRU pruning.",
     stack: ["FastAPI", "React", "Qdrant", "PostgreSQL", "LangChain", "Gemini API", "Vercel", "Render"],
-    href: "https://github.com/Manas572",
+    href: "https://github.com/Manas572/Codelens",
   },
 
   {

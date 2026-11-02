@@ -149,16 +149,18 @@ export function TerminalPortfolio() {
               }),
             });
 
-            if (res.status !== 200) {
-              throw new Error("Failed to get AI response, backend failed");
+            const data = await res.json().catch(() => ({}));
+            if (!res.ok || !data.success) {
+              throw new Error(data.error || `AI service returned HTTP ${res.status}`);
             }
-            const data = await res.json();
             newHistory.push({ type: "output", text: data.response });
             setisthinking(false);
           } catch (error) {
             newHistory.push({
               type: "error",
-              text: "Sorry but the AI failed to get response, You can still try other functions",
+              text: error instanceof Error
+                ? error.message
+                : "The AI request failed. Check the Next.js server log for details.",
             });
 
             setisthinking(false);

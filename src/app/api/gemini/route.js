@@ -3,9 +3,22 @@ import { NextResponse } from "next/server";
 import fs from "fs";
 import path from "path";
 
-const groq = new Groq({
-  apiKey: process.env.GROQ_API_KEY,
-});
+const model = process.env.GROQ_MODEL?.trim() || "openai/gpt-oss-20b";
+
+function createGroqClient() {
+  const apiKey = (process.env.GROQ_API || process.env.GROQ_API_KEY)?.trim();
+  if (!apiKey) return null;
+
+  // The Groq SDK appends /openai/v1/chat/completions, so use only the origin
+  // even when GROQ_API_URL contains the complete endpoint.
+  const configuredUrl = process.env.GROQ_API_URL?.trim();
+  const baseURL = configuredUrl ? new URL(configuredUrl).origin : undefined;
+
+  return new Groq({
+    apiKey,
+    ...(baseURL ? { baseURL } : {}),
+  });
+}
 
 const helperPath = path.join(process.cwd(), "src/app/api/helper");
 
@@ -19,9 +32,6 @@ const data = {
     fs.readFileSync(path.join(helperPath, "data/about.json"), "utf-8"),
   ),
 
-  contact: JSON.parse(
-    fs.readFileSync(path.join(helperPath, "data/contact.json"), "utf-8"),
-  ),
   contact: JSON.parse(
     fs.readFileSync(path.join(helperPath, "data/contact.json"), "utf-8"),
   ),
@@ -135,7 +145,23 @@ const toolData = {
 
 export async function POST(request) {
   try {
-    const { message } = await request.json();
+    const body = await request.json();
+    const message = typeof body?.message === "string" ? body.message.trim() : "";
+
+    if (!message) {
+      return NextResponse.json(
+        { success: false, error: "A non-empty message is required" },
+        { status: 400 },
+      );
+    }
+
+    const groq = createGroqClient();
+    if (!groq) {
+      return NextResponse.json(
+        { success: false, error: "The AI service is not configured" },
+        { status: 503 },
+      );
+    }
 
     const messages = [
       {
@@ -149,7 +175,7 @@ export async function POST(request) {
     ];
 
     let response = await groq.chat.completions.create({
-      model: "openai/gpt-oss-20b",
+      model,
       messages,
       tools,
       tool_choice: "auto",
@@ -177,7 +203,7 @@ export async function POST(request) {
       }
 
       response = await groq.chat.completions.create({
-        model: "openai/gpt-oss-20b",
+        model,
         messages,
         tools,
       });
@@ -188,14 +214,28 @@ export async function POST(request) {
       response: response.choices[0].message.content,
     });
   } catch (error) {
-    console.error(error);
+    const providerStatus = Number.isInteger(error?.status) ? error.status : null;
+    const detail = error instanceof Error ? error.message : "Unknown error";
+    const message = providerStatus === 401
+      ? "Groq rejected the API key. Check GROQ_API in .env and restart the dev server."
+      : providerStatus === 404
+        ? "Groq could not find the configured model or endpoint. Check GROQ_MODEL and GROQ_API_URL."
+        : providerStatus === 429
+          ? "Groq rate limit or quota reached. Try again later or check your Groq account."
+          : "The AI request failed. Check the Next.js server log for details.";
+
+    console.error(
+      "Groq API request failed:",
+      providerStatus ?? "no provider status",
+      detail,
+    );
 
     return NextResponse.json(
       {
         success: false,
-        error: "Something went wrong",
+        error: message,
       },
-      { status: 500 },
+      { status: 502 },
     );
   }
 }
