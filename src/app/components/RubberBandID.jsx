@@ -338,10 +338,12 @@ export function IdCard() {
             <FileText size={18} />
           </a>
           <a
-            href="https://github.com/Manas572"
-            className="p-2 hover:bg-white/10 rounded-lg transition text-white/70 hover:text-[#FFA500]"
+            href="/resume%20(3).pdf"
+            download="Manas_Kumar_Resume.pdf"
+            className="p-2 hover:bg-white/10 rounded-lg transition text-white/70 hover:text-[#50fa7b]"
             title="Download Resume"
             target="_blank"
+            rel="noopener noreferrer"
           >
             <Download size={18} />
           </a>
